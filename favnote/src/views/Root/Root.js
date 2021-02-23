@@ -22,7 +22,7 @@ const Root = () => (
           style={{
             width: '200px',
             height: '200px',
-            backgroundColor: theme.primary,
+            backgroundColor: theme.note,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -31,6 +31,8 @@ const Root = () => (
           <ButtonIcon icon={bulbIcon} />
         </div>
         <Card />
+        <Card cardType="twitter" />
+        <Card cardType="article" />
       </>
     </ThemeProvider>
   </>
