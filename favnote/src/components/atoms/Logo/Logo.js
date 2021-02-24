@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LogoWrapper = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 67px;
+  height: 67px;
   display:flex;
   flex-direction:column;
   justify-content:center;

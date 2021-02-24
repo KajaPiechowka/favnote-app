@@ -17,7 +17,8 @@ const ButtonIcon = styled.button`
     transform: scale(1.2);
   }
 
-  :active {
+
+  &.active , :active {
     background-color: white;
     outline: none;
     border: none;

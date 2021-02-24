@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {NavLink , Link} from 'react-router-dom';
+import {PropTypes} from 'prop-types'
 
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import bulbIcon from 'assets/icons/bulb.svg';
@@ -10,26 +11,30 @@ import twitterIcon from 'assets/icons/twitter.svg';
 import Logo from 'components/atoms/Logo/Logo';
 
 const SidebarWrapper = styled.div`
-padding: 30px;
-width: 153px;
-height: 100vh;
-background-color: ${({theme})=>theme.note};
-position: sticky;
-top:0;
-left:0;
-display: flex;
-flex-direction:column;
-justify-content:space-between;
-align-items:center;
-`
+  padding: 30px;
+  width: 150px;
+  height: 100vh;
+  background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.note)};
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const IconsWrapper = styled.div`
-height:45%;
+height:50%;
 display: grid;
-grid-template-rows: 1fr 1fr;
+grid-template-rows: 1fr 1.5fr;
 ` 
 const SmallIconsWrapper = styled.div`
-width: 60%;
+
+display:flex;
+flex-direction: column;
+justify-content: space-between;
+align-items:center;
 
 `
 
@@ -37,18 +42,27 @@ width: 60%;
 
 
 
-const Sidebar = () => (
-  <SidebarWrapper>
+const Sidebar = ({pageType}) => (
+  <SidebarWrapper activeColor={pageType}>
     <IconsWrapper>
-    <Logo/>
+      <Logo />
       <SmallIconsWrapper>
-        <ButtonIcon as={Link} to="/" icon={penIcon} />
-        <ButtonIcon as={Link} to="/twitters" icon={twitterIcon} />
-        <ButtonIcon as={Link} to="/articles" icon={bulbIcon} />
+        <ButtonIcon as={NavLink} exact to="/" icon={penIcon} activeClass="active" />
+        <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} activeClass="active" />
+        <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeClass="active" />
       </SmallIconsWrapper>
     </IconsWrapper>
     <ButtonIcon as={Link} to="/" icon={logoutIcon} />
   </SidebarWrapper>
 );
+
+
+Sidebar.propTypes = {
+  pageType: PropTypes.oneOf(['note', 'twitter', 'article']),
+};
+
+Sidebar.defaultProps = {
+  pageType: 'note',
+};
 
 export default Sidebar;

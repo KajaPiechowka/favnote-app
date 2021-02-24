@@ -7,7 +7,7 @@ import Button from 'components/atoms/Button/Button';
 import linkIcon from 'assets/icons/link.svg';
 
 const Wrapper = styled.div`
-  min-height: 380px;
+  min-height: 300px;
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
   border-radius: 10px;
   overflow: hidden;

@@ -8,18 +8,18 @@ import TwittersView from 'views/TwittersView';
 import GlobalStyle from 'theme/GlobalStyle';
 
 const Root = () => (
-  <MainTemplate>
-    <>
-      <GlobalStyle />
-      <BrowserRouter>
+  <>
+    <GlobalStyle />
+    <BrowserRouter>
+      <MainTemplate>
         <Switch>
           <Route exact path="/" component={NotesView} />
           <Route path="/articles" component={ArticlesView} />
           <Route path="/twitters" component={TwittersView} />
         </Switch>
-      </BrowserRouter>
-    </>
-  </MainTemplate>
+      </MainTemplate>
+    </BrowserRouter>
+  </>
 );
 
 export default Root;
