@@ -1,10 +1,15 @@
 import React from 'react';
-import Sidebar from 'components/organisms/Sidebar/Sidebar';
+import UserPageTemplate from 'templates/UserPageTemplate';
+import Card from 'components/molecues/Card/Card';
 
 const NotesView = () => (
-  <>
-    <Sidebar />
-    <h1>Notes</h1>;
-  </>
+  <UserPageTemplate pageType="note">
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
+  </UserPageTemplate>
 );
 export default NotesView;
