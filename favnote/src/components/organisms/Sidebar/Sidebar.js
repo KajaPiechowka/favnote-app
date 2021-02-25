@@ -47,9 +47,9 @@ const Sidebar = ({pageType}) => (
     <IconsWrapper>
       <Logo />
       <SmallIconsWrapper>
-        <ButtonIcon as={NavLink} exact to="/" icon={penIcon} activeClass="active" />
-        <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} activeClass="active" />
-        <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeClass="active" />
+        <ButtonIcon as={NavLink} exact to="/notes" icon={penIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeclass="active" />
       </SmallIconsWrapper>
     </IconsWrapper>
     <ButtonIcon as={Link} to="/" icon={logoutIcon} />
