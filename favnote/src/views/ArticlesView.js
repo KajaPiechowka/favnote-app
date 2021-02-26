@@ -39,15 +39,16 @@ const articles = [
 ];
 
 const ArticlesView = () => (
-  <GridTemplate pageType="article">
-    {articles.map((el) => (
+  <GridTemplate pageType="articles">
+    {articles.map(({ id, title, content, created, articleUrl }) => (
       <Card
-        cardType="article"
-        title={el.title}
-        content={el.content}
-        created={el.created}
-        articleUrl={el.articleUrl}
-        key={el.id}
+        id={id}
+        cardType="articles"
+        title={title}
+        content={content}
+        created={created}
+        articleUrl={articleUrl}
+        key={id}
       />
     ))}
   </GridTemplate>
