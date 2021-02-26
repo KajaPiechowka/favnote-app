@@ -3,7 +3,6 @@ import React from 'react';
 import Card from 'components/molecues/Card/Card';
 import GridTemplate from 'templates/GridTemplate';
 
-
 const twitters = [
   {
     id: 1,
@@ -39,12 +38,12 @@ const twitters = [
   },
 ];
 
-
 const TwittersView = () => (
-  <GridTemplate pageType="twitter">
-    {twitters.map(({title,content,created,twitterName,id}) => (
+  <GridTemplate pageType="twitters">
+    {twitters.map(({ id, title, content, created, twitterName }) => (
       <Card
-        cardType="twitter"
+        id={id}
+        cardType="twitters"
         title={title}
         content={content}
         created={created}

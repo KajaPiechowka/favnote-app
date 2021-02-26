@@ -7,6 +7,7 @@ import NotesView from 'views/NotesView';
 import TwittersView from 'views/TwittersView';
 import GlobalStyle from 'theme/GlobalStyle';
 import DetailsView from 'views/DetailsView';
+import {routes} from 'routes'
 
 const Root = () => (
   <>
@@ -14,11 +15,13 @@ const Root = () => (
     <BrowserRouter>
       <MainTemplate>
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/notes" />} />
-          <Route exact path="/notes" component={NotesView} />
-          <Route path="/notes/:id" component={DetailsView} />
-          <Route exact path="/articles" component={ArticlesView} />
-          <Route exact path="/twitters" component={TwittersView} />
+          <Route exact path={routes.home} render={() => <Redirect to="/notes" />} />
+          <Route exact path={routes.notes} component={NotesView} />
+          <Route path={routes.note} component={DetailsView} />
+          <Route exact path={routes.articles} component={ArticlesView} />
+          <Route path={routes.article} component={DetailsView} />
+          <Route exact path={routes.twitters} component={TwittersView} />
+          <Route path={routes.twitter} component={DetailsView} />
         </Switch>
       </MainTemplate>
     </BrowserRouter>

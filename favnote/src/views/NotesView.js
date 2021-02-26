@@ -35,15 +35,9 @@ const notes = [
 ];
 
 const NotesView = () => (
-  <GridTemplate pageType="note">
-    {notes.map((el) => (
-      <Card
-        cardType="note"
-        title={el.title}
-        content={el.content}
-        created={el.created}
-        key={el.id}
-      />
+  <GridTemplate pageType="notes">
+    {notes.map(({ id, title, content, created }) => (
+      <Card id={id} cardType="notes" title={title} content={content} created={created} key={id} />
     ))}
   </GridTemplate>
 );

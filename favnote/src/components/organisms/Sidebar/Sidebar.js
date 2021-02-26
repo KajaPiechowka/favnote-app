@@ -25,7 +25,7 @@ const SidebarWrapper = styled.div`
 `;
 
 const IconsWrapper = styled.div`
-height:50%;
+height:56%;
 display: grid;
 grid-template-rows: 1fr 1.5fr;
 ` 
@@ -58,11 +58,11 @@ const Sidebar = ({pageType}) => (
 
 
 Sidebar.propTypes = {
-  pageType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
 
 Sidebar.defaultProps = {
-  pageType: 'note',
+  pageType: 'notes',
 };
 
 export default Sidebar;

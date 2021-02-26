@@ -1,5 +1,7 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+
   "env": {
     "jest": true
   },
@@ -7,6 +9,15 @@
     "document": true
   },
   "rules": {
+    "default-case": [
+      "error",
+      {
+        "commentPattern": "^skip\\sdefault"
+      }
+    ],
+    "react/destructuring-assignment": 0,
+    "react/state-in-constructor": 0,
+    "react/prop-types": 0,
     "import/prefer-default-export": 0,
     "react/jsx-filename-extension": [
       1,
