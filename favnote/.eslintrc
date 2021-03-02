@@ -6,6 +6,7 @@
     "jest": true
   },
   "globals": {
+    "window": true,
     "document": true
   },
   "rules": {
@@ -15,6 +16,8 @@
         "commentPattern": "^skip\\sdefault"
       }
     ],
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
     "no-unused-vars": "warn",
     "react/forbid-prop-types": 0,
     "react/destructuring-assignment": 0,
