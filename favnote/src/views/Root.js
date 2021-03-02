@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {Provider} from 'react-redux';
 
+import store from "store";
 import MainTemplate from 'templates/MainTemplate';
 import ArticlesView from 'views/ArticlesView';
 import NotesView from 'views/NotesView';
@@ -10,7 +12,7 @@ import DetailsView from 'views/DetailsView';
 import {routes} from 'routes'
 
 const Root = () => (
-  <>
+  <Provider store={store}>
     <GlobalStyle />
     <BrowserRouter>
       <MainTemplate>
@@ -25,7 +27,7 @@ const Root = () => (
         </Switch>
       </MainTemplate>
     </BrowserRouter>
-  </>
+  </Provider>
 );
 
 export default Root;
