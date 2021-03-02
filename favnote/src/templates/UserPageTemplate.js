@@ -1,6 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-
+import PropTypes from 'prop-types';
 import Sidebar from 'components/organisms/Sidebar/Sidebar';
 
 const UserPageTemplate = ({ children, pageType }) => (
@@ -11,11 +10,11 @@ const UserPageTemplate = ({ children, pageType }) => (
 );
 
 UserPageTemplate.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
   pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
+
 UserPageTemplate.defaultProps = {
-  children: null,
   pageType: 'notes',
 };
 
