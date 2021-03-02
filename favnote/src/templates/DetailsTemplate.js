@@ -64,7 +64,10 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
       <Paragraph>{content}</Paragraph>
       {pageType === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
       {pageType === 'twitters' && (
-        <StyledImage alt={title} src={`https://avatars.io/twitter/${twitterName}`} />
+        <StyledImage
+          alt={twitterName}
+          src="https://m.media-amazon.com/images/M/MV5BMTc4MDE4ODM3N15BMl5BanBnXkFtZTcwNjIwNjE3MQ@@._V1_UY317_CR16,0,214,317_AL_.jpg"
+        />
       )}
       <Button as={Link} to={`/${pageType}`} activecolor={pageType}>
         save / close
