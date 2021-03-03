@@ -5,15 +5,24 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Input from 'components/atoms/Input/Input';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import withContext from 'hoc/withContext'
 
 const StyledWrapper = styled.div`
-  padding: 25px 40px 25px 40px;
+  padding: 25px 50px 25px 50px;
+  @media (max-width:1000px) {
+    padding:25px 70px 25px 70px;
+  }
 `;
 
 const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px;
+  @media (max-width:1000px) {
+    display:flex;
+    flex-wrap: wrap;
+
+  }
 `;
 
 const PageHeader = styled.div`
@@ -30,15 +39,15 @@ const StyledParagraph = styled(Paragraph)`
   font-weight: ${({ theme }) => theme.bold};
 `;
 
-const GridTemplate = ({ children, pageType }) => (
-  <UserPageTemplate pageType={pageType}>
+const GridTemplate = ({ children, pageContext }) => (
+  <UserPageTemplate>
     <StyledWrapper>
       <PageHeader>
         <Input search placeholder="Search" />
         <StyledHeading big as="h1">
-          {pageType}
+          {pageContext}
         </StyledHeading>
-        <StyledParagraph>6 {pageType}</StyledParagraph>
+        <StyledParagraph>6 {pageContext}</StyledParagraph>
       </PageHeader>
       <GridWrapper>{children}</GridWrapper>
     </StyledWrapper>
@@ -47,8 +56,12 @@ const GridTemplate = ({ children, pageType }) => (
 
 GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']).isRequired,
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+};
+
+GridTemplate.defaultProps = {
+  pageContext: 'notes',
 };
 
 
-export default GridTemplate;
+export default withContext(GridTemplate);
