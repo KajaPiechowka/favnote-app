@@ -9,6 +9,7 @@ import logoutIcon from 'assets/icons/logout.svg';
 import penIcon from 'assets/icons/pen.svg';
 import twitterIcon from 'assets/icons/twitter.svg';
 import Logo from 'components/atoms/Logo/Logo';
+import withContext from 'hoc/withContext'
 
 const SidebarWrapper = styled.div`
   padding: 30px;
@@ -42,8 +43,8 @@ align-items:center;
 
 
 
-const Sidebar = ({pageType}) => (
-  <SidebarWrapper activeColor={pageType}>
+const Sidebar = ({pageContext}) => (
+  <SidebarWrapper activeColor={pageContext}>
     <IconsWrapper>
       <Logo />
       <SmallIconsWrapper>
@@ -58,11 +59,11 @@ const Sidebar = ({pageType}) => (
 
 
 Sidebar.propTypes = {
-  pageType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
 
 Sidebar.defaultProps = {
-  pageType: 'notes',
+  pageContext: 'notes',
 };
 
-export default Sidebar;
+export default withContext(Sidebar);

@@ -6,6 +6,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 25px 150px 25px 70px;
@@ -52,8 +53,8 @@ const StyledImage = styled.img`
   border-radius: 50%;
 `;
 
-const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitterName }) => (
-  <UserPageTemplate pageType={pageType}>
+const DetailsTemplate = ({ title, created, content, articleUrl, twitterName , pageContext }) => (
+  <UserPageTemplate >
     <StyledWrapper>
       <StyledPageHeader>
         <StyledHeading big as="h1">
@@ -62,14 +63,14 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
         <StyledParagraph>{created}</StyledParagraph>
       </StyledPageHeader>
       <Paragraph>{content}</Paragraph>
-      {pageType === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
-      {pageType === 'twitters' && (
+      {pageContext === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
+      {pageContext === 'twitters' && (
         <StyledImage
           alt={twitterName}
           src="https://m.media-amazon.com/images/M/MV5BMTc4MDE4ODM3N15BMl5BanBnXkFtZTcwNjIwNjE3MQ@@._V1_UY317_CR16,0,214,317_AL_.jpg"
         />
       )}
-      <Button as={Link} to={`/${pageType}`} activecolor={pageType}>
+      <Button as={Link} to={`/${pageContext}`} activecolor={pageContext}>
         save / close
       </Button>
     </StyledWrapper>
@@ -77,13 +78,15 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
 );
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.string.isRequired,
   title: PropTypes.string,
   created: PropTypes.string,
   content: PropTypes.string,
   articleUrl: PropTypes.string,
   twitterName: PropTypes.string,
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
+
+
 
 DetailsTemplate.defaultProps = {
   title: '',
@@ -91,6 +94,7 @@ DetailsTemplate.defaultProps = {
   content: '',
   articleUrl: '',
   twitterName: '',
+    pageContext: 'notes',
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);
