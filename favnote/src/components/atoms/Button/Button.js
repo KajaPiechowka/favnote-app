@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
+  display:block;
   padding: 0;
-  background-color: ${({ activeColor,theme }) => theme[activeColor]};
+  background-color: ${({ activeColor,theme }) =>  theme[activeColor]};
   width: 220px;
   height: 47px;
   border: none;
