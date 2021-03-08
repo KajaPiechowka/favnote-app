@@ -8,6 +8,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
 import withContext from 'hoc/withContext';
 
+
 const StyledWrapper = styled.div`
   padding: 25px 150px 25px 70px;
   max-width: 50vw;
@@ -53,6 +54,14 @@ const StyledImage = styled.img`
   border-radius: 50%;
 `;
 
+const StyledLinkButton = styled(Link)`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration: none;
+  color: ${({theme})=>theme.black}
+`
+
 const DetailsTemplate = ({ title, created, content, articleUrl, twitterName , pageContext }) => (
   <UserPageTemplate >
     <StyledWrapper>
@@ -70,9 +79,10 @@ const DetailsTemplate = ({ title, created, content, articleUrl, twitterName , pa
           src="https://m.media-amazon.com/images/M/MV5BMTc4MDE4ODM3N15BMl5BanBnXkFtZTcwNjIwNjE3MQ@@._V1_UY317_CR16,0,214,317_AL_.jpg"
         />
       )}
-      <Button as={Link} to={`/${pageContext}`} activecolor={pageContext}>
+      <Button as={StyledLinkButton} to={`/${pageContext}`} activeColor={pageContext}>
         save / close
       </Button>
+
     </StyledWrapper>
   </UserPageTemplate>
 );
