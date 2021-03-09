@@ -59,7 +59,8 @@ const StyledLinkButton = styled(Link)`
   justify-content:center;
   align-items:center;
   text-decoration: none;
-  color: ${({theme})=>theme.black}
+  color: ${({theme})=>theme.black};
+  margin-top: 50px;
 `
 
 const DetailsTemplate = ({ title, created, content, articleUrl, twitterName , pageContext }) => (

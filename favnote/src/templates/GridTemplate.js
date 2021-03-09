@@ -62,7 +62,7 @@ state = {
   isItemBarOpen: false,
 }
 
-handleToggleBar = () => { this.setState(prevState => ({ isItemBarOpen: !prevState.isItemBarOpen}) ) }
+toggleItemBar = () => { this.setState(prevState => ({ isItemBarOpen: !prevState.isItemBarOpen}) ) }
 
 
 
@@ -81,8 +81,8 @@ handleToggleBar = () => { this.setState(prevState => ({ isItemBarOpen: !prevStat
           </PageHeader>
           <GridWrapper>{children}</GridWrapper>
         </StyledWrapper>
-        <AddButton icon={plusIcon} activeColor={pageContext} onClick={this.handleToggleBar}/>
-        <NewItemBar isVisible={isItemBarOpen}/>
+        <AddButton icon={plusIcon} activeColor={pageContext} onClick={this.toggleItemBar}/>
+        <NewItemBar handleClose={this.toggleItemBar} isVisible={isItemBarOpen}/>
       </UserPageTemplate>
     )}
   };
