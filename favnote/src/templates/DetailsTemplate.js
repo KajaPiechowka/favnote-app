@@ -63,8 +63,8 @@ const StyledLinkButton = styled(Link)`
   margin-top: 50px;
 `
 
-const DetailsTemplate = ({ title, created, content, articleUrl, twitterName , pageContext }) => (
-  <UserPageTemplate >
+const DetailsTemplate = ({ title, created, content, articleUrl, twitterUrl, pageContext }) => (
+  <UserPageTemplate>
     <StyledWrapper>
       <StyledPageHeader>
         <StyledHeading big as="h1">
@@ -76,14 +76,13 @@ const DetailsTemplate = ({ title, created, content, articleUrl, twitterName , pa
       {pageContext === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
       {pageContext === 'twitters' && (
         <StyledImage
-          alt={twitterName}
-          src="https://m.media-amazon.com/images/M/MV5BMTc4MDE4ODM3N15BMl5BanBnXkFtZTcwNjIwNjE3MQ@@._V1_UY317_CR16,0,214,317_AL_.jpg"
+          alt={title}
+          src={twitterUrl}
         />
       )}
       <Button as={StyledLinkButton} to={`/${pageContext}`} activeColor={pageContext}>
         save / close
       </Button>
-
     </StyledWrapper>
   </UserPageTemplate>
 );
@@ -93,7 +92,7 @@ DetailsTemplate.propTypes = {
   created: PropTypes.string,
   content: PropTypes.string,
   articleUrl: PropTypes.string,
-  twitterName: PropTypes.string,
+  twitterUrl: PropTypes.string,
   pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
 };
 
@@ -104,8 +103,8 @@ DetailsTemplate.defaultProps = {
   created: '',
   content: '',
   articleUrl: '',
-  twitterName: '',
-    pageContext: 'notes',
+  twitterUrl: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
+  pageContext: 'notes',
 };
 
 export default withContext(DetailsTemplate);

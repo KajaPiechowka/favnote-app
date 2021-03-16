@@ -85,7 +85,7 @@ class Card extends Component {
       pageContext,
       title,
       created,
-      twitterName,
+      twitterUrl,
       articleUrl,
       content,
       removeItem,
@@ -102,7 +102,12 @@ class Card extends Component {
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
           {pageContext === 'twitters' && (
-            <StyledAvatar src="https://pbs.twimg.com/profile_images/1336281436685541376/fRSl8uJP_400x400.jpg" />
+            <StyledAvatar
+              alt={title}
+              src={
+                twitterUrl || 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
+              }
+            />
           )}
           {pageContext === 'articles' && <StyledLinkButton href={articleUrl} />}
         </InnerWrapper>
@@ -118,11 +123,11 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
-  twitterName: PropTypes.string,
+  twitterUrl: PropTypes.string.isRequired,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
@@ -130,7 +135,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
   pageContext: 'notes',
-  twitterName: null,
+
   articleUrl: null,
 };
 

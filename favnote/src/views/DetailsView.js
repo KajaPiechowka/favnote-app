@@ -32,7 +32,7 @@ class DetailsPage extends Component {
       title: 'Wake me up when Vue ends',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      twitterName: 'hello_roman',
+      twitterUrl: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
       articleUrl: 'https://youtube.com/helloroman',
       created: '1 day',
     };
@@ -46,7 +46,7 @@ class DetailsPage extends Component {
         created={dummyArticle.created}
         content={dummyArticle.content}
         articleUrl={dummyArticle.articleUrl}
-        twitterName={dummyArticle.twitterName}
+        twitterUrl={dummyArticle.twitterUrl}
       />
     );
   }

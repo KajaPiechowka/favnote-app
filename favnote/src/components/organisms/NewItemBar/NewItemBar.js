@@ -13,18 +13,13 @@ import * as Yup from 'yup';
 const ValuesSchema = Yup.object().shape({
   title: Yup.string().min(2, 'title too short!').max(50, 'title too long!').required('Required'),
   content: Yup.string()
-    .min(100, 'content too short!')
+    .min(20, 'content too short!')
     .max(20000, 'content too long!')
     .required('Required'),
-  twitterName: Yup.string()
-    .min(2, 'twitter name too short!')
-    .max(50, 'twitter name too long!')
-    .required('Required'),
-  articleUrl: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .url('This is not url!')
-    .required('Required'),
+  twitterUrl: Yup.string().min(2, 'twitter name too short!').max(50, 'twitter name too long!'),
+  // .required('Required'),
+  articleUrl: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').url('This is not url!'),
+  // .required('Required'),
 });
 
 const StyledWrapper = styled.div`
@@ -77,7 +72,7 @@ const NewItemBar = ({ isVisible, pageContext, addItem, handleClose }) => (
   <StyledWrapper isVisible={isVisible} activeColor={pageContext}>
     <Heading big>Create new {pageContext}</Heading>
     <Formik
-      initialValues={{ title: '', twitterName: '', content: '', articleUrl: '', created: '' }}
+      initialValues={{ title: '', twitterUrl: '', content: '', articleUrl: '', created: '' }}
       onSubmit={(values) => {
         addItem(pageContext, values);
         handleClose();
@@ -100,33 +95,39 @@ const NewItemBar = ({ isVisible, pageContext, addItem, handleClose }) => (
           ) : null}
 
           {pageContext === 'twitters' && (
-            <StyledInput
-              as={Field}
-              type="text"
-              name="twitterName"
-              placeholder="twitter name"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.twitterName}
-            />
+            <>
+              <StyledInput
+                as={Field}
+                type="text"
+                name="twitterUrl"
+                placeholder="profile url"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.twitterUrl}
+              />
+              {errors.twitterUrl && touched.twitterUrl ? (
+                <StyledErrorMessage>{errors.twitterUrl}</StyledErrorMessage>
+              ) : null}
+            </>
           )}
-          {errors.twitterName && touched.twitterName ? (
-            <StyledErrorMessage>{errors.twitterName}</StyledErrorMessage>
-          ) : null}
+
           {pageContext === 'articles' && (
-            <StyledInput
-              as={Field}
-              type="text"
-              name="articleUrl"
-              placeholder="link"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.articleUrl}
-            />
+            <>
+              <StyledInput
+                as={Field}
+                type="text"
+                name="articleUrl"
+                placeholder="link"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.articleUrl}
+              />
+              {errors.articleUrl && touched.articleUrl ? (
+                <StyledErrorMessage>{errors.articleUrl}</StyledErrorMessage>
+              ) : null}
+            </>
           )}
-          {errors.articleUrl && touched.articleUrl ? (
-            <StyledErrorMessage>{errors.articleUrl}</StyledErrorMessage>
-          ) : null}
+
           <StyledTextarea
             as="textarea"
             name="content"
