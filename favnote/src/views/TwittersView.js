@@ -11,14 +11,14 @@ const TwittersView = ({twitters}) => (
   <>
   <GridTemplate pageType="twitters">
  {
-   twitters.map(({ id, title, content, created, twitterName }) => (
+   twitters.map(({ id, title, content, created, twitterUrl }) => (
      <Card
        id={id}
        cardType="twitters"
        title={title}
        content={content}
        created={created}
-       twitterName={twitterName}
+       twitterUrl={twitterUrl}
        key={id}
      />
    ))
@@ -32,10 +32,17 @@ TwittersView.propTypes = {
     id: PropTypes.number.isRequired,
     title:PropTypes.string.isRequired,
     content:PropTypes.string.isRequired,
-    twitterName: PropTypes.string.isRequired,
+    twitterUrl: PropTypes.string,
     created:PropTypes.string.isRequired,
   }),
-  ).isRequired,
+  )
+};
+TwittersView.defaultProps = {
+  twitters: PropTypes.arrayOf(
+    PropTypes.shape({
+      twitterUrl: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png',
+    }),
+  ),
 };
 
 const mapStateToProps = state => {
