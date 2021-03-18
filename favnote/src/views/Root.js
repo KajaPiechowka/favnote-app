@@ -10,6 +10,7 @@ import TwittersView from 'views/TwittersView';
 import GlobalStyle from 'theme/GlobalStyle';
 import DetailsView from 'views/DetailsView';
 import {routes} from 'routes'
+import LoginView from './LoginView';
 
 const Root = () => (
   <Provider store={store}>
@@ -24,6 +25,7 @@ const Root = () => (
           <Route path={routes.article} component={DetailsView} />
           <Route exact path={routes.twitters} component={TwittersView} />
           <Route path={routes.twitter} component={DetailsView} />
+          <Route exact path={routes.login} component={LoginView}/>
         </Switch>
       </MainTemplate>
     </BrowserRouter>
