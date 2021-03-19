@@ -16,6 +16,12 @@
         "commentPattern": "^skip\\sdefault"
       }
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
     "no-unused-vars": "warn",

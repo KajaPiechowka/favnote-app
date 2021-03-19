@@ -7,6 +7,8 @@ import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
 import { routes } from 'routes';
+import { register as registerAction } from 'actions';
+import {connect} from 'react-redux';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -30,12 +32,12 @@ const StyledLink = styled(Link)`
   margin: 20px 0 50px;
 `;
 
-const RegisterView = () => (
+const RegisterView = ({register}) => (
   <AuthTemplate>
     <Formik
       initialValues={{ username: '', password: '' }}
       onSubmit={({ username, password }) => {
-        console.log('hello');
+        register(username,password)
       }}
     >
       {({ handleChange, handleBlur, values }) => (
@@ -69,4 +71,8 @@ const RegisterView = () => (
   </AuthTemplate>
 );
 
-export default RegisterView;
+const mapDispatchToProps = (dispatch) => ({
+  register: (username, password) => dispatch(registerAction(username, password)),
+});
+
+export default connect(null, mapDispatchToProps)(RegisterView);

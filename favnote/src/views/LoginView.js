@@ -5,7 +5,7 @@ import AuthTemplate from 'templates/AuthTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { routes } from 'routes';
 import { connect } from 'react-redux';
 import { authenticate as authenticateAction } from 'actions';
@@ -32,7 +32,7 @@ const StyledLink = styled(Link)`
   margin: 20px 0 50px;
 `;
 
-const LoginView = ({ authenticate }) => (
+const LoginView = ({userID,   authenticate }) => (
   <AuthTemplate>
     <Formik
       initialValues={{ username: '', password: '' }}
@@ -40,8 +40,12 @@ const LoginView = ({ authenticate }) => (
         authenticate(username, password);
       }}
     >
-      {({ handleChange, handleBlur, values }) => (
-        <>
+      {({ handleChange, handleBlur, values }) => {
+          
+          if(userID){
+            return <Redirect to={routes.home}/>
+          }
+          return(<>
           <Heading>Sign in</Heading>
           <StyledForm>
             <StyledInput
@@ -65,14 +69,15 @@ const LoginView = ({ authenticate }) => (
             </Button>
           </StyledForm>
           <StyledLink to={routes.register}>I want my account!</StyledLink>
-        </>
-      )}
+        </>) }}
     </Formik>
   </AuthTemplate>
 );
+
+const mapStateToProps = ({userID = null}) =>({ userID, });
 
 const mapDispatchToProps = (dispatch) => ({
   authenticate: (username, password) => dispatch(authenticateAction(username, password)),
 });
 
-export default connect(null, mapDispatchToProps)(LoginView);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

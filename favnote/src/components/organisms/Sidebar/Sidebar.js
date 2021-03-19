@@ -53,7 +53,7 @@ const Sidebar = ({pageContext}) => (
         <ButtonIcon as={NavLink} to="/articles" icon={bulbIcon} activeclass="active" />
       </SmallIconsWrapper>
     </IconsWrapper>
-    <ButtonIcon as={Link} to="/" icon={logoutIcon} />
+    <ButtonIcon as={Link} to="/login" icon={logoutIcon} />
   </SidebarWrapper>
 );
 

@@ -1,3 +1,5 @@
+import {ADD_ITEM , REMOVE_ITEM, AUTH_SUCCESS} from 'actions'
+
 const initialState = {
   twitters: [
     {
@@ -103,12 +105,19 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_ITEM':
+    case AUTH_SUCCESS:
+      return{
+        ...state,
+        user:{
+          userID: action.payload.data.id,
+        }
+      }
+    case ADD_ITEM:
       return {
         ...state,
         [action.payload.itemType]: [...state[action.payload.itemType], action.payload.item],
       };
-    case 'REMOVE_ITEM':
+    case REMOVE_ITEM:
       return {
         ...state,
         [action.payload.itemType]: [

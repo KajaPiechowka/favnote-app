@@ -11,6 +11,7 @@ import GlobalStyle from 'theme/GlobalStyle';
 import DetailsView from 'views/DetailsView';
 import {routes} from 'routes'
 import LoginView from './LoginView';
+import RegisterView from './RegisterView';
 
 const Root = () => (
   <Provider store={store}>
@@ -26,6 +27,7 @@ const Root = () => (
           <Route exact path={routes.twitters} component={TwittersView} />
           <Route path={routes.twitter} component={DetailsView} />
           <Route exact path={routes.login} component={LoginView}/>
+          <Route exact path={routes.register} component={RegisterView}/>
         </Switch>
       </MainTemplate>
     </BrowserRouter>

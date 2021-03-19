@@ -127,7 +127,7 @@ Card.propTypes = {
   pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
-  twitterUrl: PropTypes.string.isRequired,
+  twitterUrl: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
   removeItem: PropTypes.func.isRequired,
@@ -135,7 +135,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
   pageContext: 'notes',
-
+  twitterUrl: null,
   articleUrl: null,
 };
 
