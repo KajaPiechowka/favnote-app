@@ -9,13 +9,13 @@ import GridTemplate from 'templates/GridTemplate';
 
 const ArticlesView = ({articles}) => (
   <GridTemplate pageType="articles">
-    {articles.map(({ id, title, content, created, articleUrl }) => (
+    {articles.map(({ id, title, content, articleUrl }) => (
       <Card
         id={id}
         cardType="articles"
         title={title}
         content={content}
-        created={created}
+
         articleUrl={articleUrl}
         key={id}
       />
@@ -30,8 +30,7 @@ ArticlesView.propTypes = {
       title: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
       articleUrl: PropTypes.string.isRequired,
-      created: PropTypes.string.isRequired,
-    }),
+}),
   ).isRequired,
 };
 
