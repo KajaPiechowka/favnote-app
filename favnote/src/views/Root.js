@@ -19,6 +19,8 @@ const Root = () => (
     <BrowserRouter>
       <MainTemplate>
         <Switch>
+          <Route exact path={routes.login} component={LoginView}/>
+          <Route exact path={routes.register} component={RegisterView}/>
           <Route exact path={routes.home} render={() => <Redirect to="/notes" />} />
           <Route exact path={routes.notes} component={NotesView} />
           <Route path={routes.note} component={DetailsView} />
@@ -26,8 +28,6 @@ const Root = () => (
           <Route path={routes.article} component={DetailsView} />
           <Route exact path={routes.twitters} component={TwittersView} />
           <Route path={routes.twitter} component={DetailsView} />
-          <Route exact path={routes.login} component={LoginView}/>
-          <Route exact path={routes.register} component={RegisterView}/>
         </Switch>
       </MainTemplate>
     </BrowserRouter>

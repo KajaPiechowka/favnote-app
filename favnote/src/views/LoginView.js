@@ -43,7 +43,8 @@ const LoginView = ({userID,   authenticate }) => (
       {({ handleChange, handleBlur, values }) => {
           
           if(userID){
-            return <Redirect to={routes.home}/>
+        
+            return (<>{console.log('redirect!')}<Redirect to={routes.home}/></>)
           }
           return(<>
           <Heading>Sign in</Heading>
