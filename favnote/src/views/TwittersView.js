@@ -25,7 +25,6 @@ class TwittersView extends Component {
                 cardType="twitters"
                 title={title}
                 content={content}
-
                 twitterUrl={twitterUrl}
                 key={id}
               />

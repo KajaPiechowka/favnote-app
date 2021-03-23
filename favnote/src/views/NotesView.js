@@ -10,8 +10,8 @@ import GridTemplate from 'templates/GridTemplate';
 const NotesView = ({notes}) => (
   <>
   <GridTemplate pageType="notes">
-    {notes.map(({ id, title, content, created }) => (
-      <Card id={id} cardType="notes" title={title} content={content} created={created} key={id} />
+    {notes.map(({ id, title, content }) => (
+      <Card id={id} cardType="notes" title={title} content={content} key={id} />
     ))}
   </GridTemplate>
   </>
@@ -23,7 +23,7 @@ NotesView.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
-      created: PropTypes.string.isRequired,
+
     }),
   ).isRequired,
 };
